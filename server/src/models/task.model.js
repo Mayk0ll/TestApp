@@ -11,7 +11,7 @@ const taskSchema = new Schema({
     },
     status: {
         type: String,
-        required: true
+        default: 'Nuevo',
     }, 
     user_id: {
         type: Schema.Types.ObjectId,

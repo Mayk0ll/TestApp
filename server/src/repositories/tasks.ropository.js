@@ -1,23 +1,31 @@
 import TaskModel from "../models/task.model.js"
 
-const createTaskQuery = (task) => {
-    return TaskModel.create(task);
+const createTaskQuery = async (task) => {
+    await TaskModel.create(task);
+    return getTasksQuery();
 }
 
-const getTasksQuery = () => {
+const getTasksQuery = async () => {
     return TaskModel.find();
 }
 
-const getTaskByIdQuery = (id) => {
+const getTaskByIdQuery = async (id) => {
     return TaskModel.findById(id);
 }
 
-const updateTaskQuery = (_id, task) => {
-    return TaskModel.findByIdAndUpdate(_id, task)
+const updateTaskQuery = async (_id, task) => {
+    await TaskModel.findByIdAndUpdate(_id, task);
+    return getTasksQuery();
 }
 
-const deleteTaskQuery = (_id) => {
-    return TaskModel.findByIdAndDelete(_id);
+const completedTaskQuery = async (_id) => {
+    await TaskModel.findByIdAndUpdate(_id, {status: 'Completado'});
+    return getTasksQuery();
 }
 
-export { createTaskQuery, getTasksQuery, getTaskByIdQuery, updateTaskQuery, deleteTaskQuery }
+const deleteTaskQuery = async (_id) => {
+    await TaskModel.findByIdAndDelete(_id);
+    return getTasksQuery();
+}
+
+export { createTaskQuery, getTasksQuery, getTaskByIdQuery, completedTaskQuery, updateTaskQuery, deleteTaskQuery }

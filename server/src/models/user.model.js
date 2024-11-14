@@ -17,10 +17,15 @@ const userSchema = new Schema({
     }
 });
 
+userSchema.statics.emailExists = async function(email) {
+    return await this.findOne({ email });
+}
+
 userSchema.methods.toJSON = function() {
     const { __v, _id, password, ...user } = this.toObject();
     user.uid = _id;
     return user;
 }
+
 
 export default model('User', userSchema);
