@@ -17,13 +17,11 @@ const Dashboard = () => {
   useEffect(() => {
     (async ()=>{
       const { data } = await getTasks();
-      console.log(data);
       setTasks(data);
     })();
   }, []);
 
   const handleEditTask = (task: Task) => {
-    console.log("Edit Task", task);
     setTitle(task.title);
     setDescription(task.description);
     setId(task.id || '');
@@ -51,6 +49,8 @@ const Dashboard = () => {
       setTasks(data);
       setIsNew(true);
     }
+    setTitle('');
+    setDescription('');
   }
 
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
             <form className="bg-white text-black border rounded d-flex flex-column gap-4 p-3">
               <h4 className="text-center">{isNew? 'Agregar':'Editar'} tarea</h4>
               <div>
-                <label htmlFor="title" className="form-label">Nombre:</label>
+                <label htmlFor="title" className="form-label">Titulo:</label>
                 <input type="text" className="form-control" name="title" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
               </div>
               <div>
@@ -72,9 +72,9 @@ const Dashboard = () => {
               <button className="btn btn-primary" onClick={handleSave}>{isNew? 'Agregar':'Editar'}</button>
             </form>
           </div>
-          <div className="col-12 col-md-8 bg-white text-black border rounded">
+          <div className="col-12 col-md-8 bg-white text-black border rounded p-2 containerTask">
             <h4 className="text-center">Tareas</h4>
-            <div className="d-flex align-items-center flex-wrap gap-3">
+            <div className="d-flex align-items-center flex-wrap gap-2">
               { tasks.map((task: ITask) => ( <CartTasks key={task.id} id={task.id} title={task.title} description={task.description} status={task.status} user_id={task.user_id} edit={handleEditTask} eliminate={handleDeleteTask} completed={handleComplete} ></CartTasks> ))}
             </div>
           </div>

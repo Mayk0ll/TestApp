@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
 import { signup } from "../services/Auth.service";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
     const [name, setName] = useState("");
@@ -16,6 +17,8 @@ const SignUp = () => {
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if( password !== password2 ) return Swal.fire("Error", "Las contraseñas no coinciden", "error");
 
         const { data } = await signup({ name, email, password });
         auth.saveUser(data);

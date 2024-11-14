@@ -19,7 +19,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
         <nav className="navbar navbar-expand-lg text-light bg-dark">
           <div className="container-fluid d-flex justify-content-between align-items-center">
             <h4>Dominar</h4>
-            <h3>{`Bienvenido de vuelta ${auth.getUserName()}`}</h3> 
+            <h3>{`Bienvenido ${auth.getUserName()}`}</h3> 
             <button className="btn btn-primary" onClick={logout}>Salir</button>
           </div>
         </nav>

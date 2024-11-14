@@ -23,16 +23,16 @@ const CartTasks = ({ id = '', title, description, status, user_id, edit, elimina
     };
 
     return (
-        <div className="d-flex flex-column border rounded p-2">
+        <div className="d-flex flex-column justify-content-between border rounded p-2 task">
             <h4>{title}</h4>
             <p>{description}</p>
             <p>{status}</p>
             <div className="d-flex justify-content-around">
-                <button type="button" onClick={completeTask} className="btn btn-success">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                </button>
                 <button type="button" onClick={editTask} className="btn btn-warning">
                     <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
+                <button type="button" onClick={completeTask} className="btn btn-success">
+                    <FontAwesomeIcon icon={faCheckCircle} />
                 </button>
                 <button type="button" onClick={eliminateTask} className="btn btn-danger">
                     <FontAwesomeIcon icon={faTrashCan} />

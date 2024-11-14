@@ -21,9 +21,10 @@ const validateUser = async (email, password) => {
 
 export const register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, password2} = req.body;
 
-        if (!name || !email || !password) return res.status(400).json({ message: "Por favor, Completa todos los campos" });
+        if (!name || !email || !password || !password2) return res.status(400).json({ message: "Por favor, Completa todos los campos" });
+        if (password !== password2) return res.status(400).json({ message: "Las contraseñas no coinciden" });
 
         const userExists = await userModel.emailExists(email);
         if (userExists) return res.status(400).json({ message: "El email ya esta registrado" });

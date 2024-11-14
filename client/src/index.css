@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.task{
+  width: 200px;
+  height: 200px;
+}
+
+.containerTask{
+  max-height: 75vh;
+  overflow: auto;
+}

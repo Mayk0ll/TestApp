@@ -1,50 +1,38 @@
-# React + TypeScript + Vite
+# Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un cliente frontend construido con React y Vite. Utiliza TypeScript para tipado, ESLint para el linting del código y varias dependencias para la interfaz y navegación.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (versión recomendada 14 o superior)
+- Vite como servidor de desarrollo y empaquetador de módulos
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Para comenzar, clona el repositorio y accede al directorio del proyecto. Luego, instala las dependencias ejecutando el comando `npm install`.
 
-- Configure the top-level `parserOptions` property like this:
+## Scripts
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+El proyecto incluye los siguientes scripts:
+- **Desarrollo**: Ejecuta el servidor de desarrollo de Vite con `npm run dev`.
+- **Compilación**: Genera una versión optimizada para producción con `npm run build`.
+- **Previsualización**: Permite visualizar la versión de producción con `npm run preview`.
+- **Lint**: Ejecuta ESLint para verificar el estilo y errores en el código con `npm run lint`.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Dependencias
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Las principales dependencias del proyecto incluyen:
+- **@fortawesome/fontawesome-svg-core** y **@fortawesome/react-fontawesome**: Para utilizar iconos de FontAwesome.
+- **axios**: Para manejar las solicitudes HTTP.
+- **bootstrap**: Framework de CSS para estilizar el frontend.
+- **react** y **react-dom**: Librerías principales para la construcción de la interfaz.
+- **react-router-dom**: Para el manejo de la navegación entre rutas.
+- **sweetalert2**: Para mostrar alertas y notificaciones estilizadas.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Dependencias de Desarrollo
+
+Entre las dependencias de desarrollo se encuentran:
+- **@eslint/js** y **eslint**: Para el linting del código.
+- **@vitejs/plugin-react**: Para integrar React con Vite.
+- **typescript**: Para tipado estático en JavaScript.
+- **typescript-eslint**: Para añadir compatibilidad de ESLint con TypeScript.
